@@ -1,0 +1,80 @@
+/* src/main/resources/static/css/styles.css */
+body {
+    background-color: #f8f9fa;
+    color: #314641;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1200px; /* Ajustează lățimea maximă pentru pagini mari */
+    margin: 0 auto; /* Centrează containerul */
+}
+
+h1 {
+    color: #8F79A1; /* Culoare pentru titlu */
+    text-align: center;
+}
+
+p {
+    color: #314641; /* Culoare pentru text */
+}
+
+.navbar {
+    background-color: #526863;
+}
+
+.navbar-brand {
+    color: #f8f9fa;
+}
+
+.navbar-nav .nav-link {
+    color: #f8f9fa;
+}
+
+.btn-custom {
+    background-color: #8F79A1;
+    color: white;
+}
+
+.btn-custom:hover {
+    background-color: #715C83;
+}
+
+.error {
+    color: #dc3545; /* Culoare pentru mesajele de eroare */
+    text-align: center;
+}
+
+.message {
+    color: #28a745; /* Culoare pentru mesajele de succes */
+    text-align: center;
+}
+
+.oauth-login {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.oauth-login img {
+    vertical-align: middle;
+    margin-right: 0.5rem;
+}
+
+a.btn-dark {
+    background-color: #333333;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    display: inline-block;
+    font-size: 1rem;
+}
+
+a.btn-dark:hover {
+    background-color: #555555;
+}

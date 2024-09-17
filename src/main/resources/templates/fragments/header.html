@@ -15,15 +15,15 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item" th:if="${isUser}">
-                    <a class="nav-link" href="/x">X USER</a>
+                    <a class="nav-link" th:href="@{/x}">X USER</a>  <!-- Link către /x -->
                 </li>
                 <li class="nav-item" th:if="${isAdmin}">
-                    <a class="nav-link" href="/z">Z ADMIN</a>
+                    <a class="nav-link" th:href="@{/z}">Z ADMIN</a>  <!-- Link către /z -->
                 </li>
                 <li class="nav-item">
                     <!-- Butonul de logout -->
                     <form action="/logout" method="post" style="display: inline;">
-                        <button type="submit" class="btn btn-primary">Logout</button>
+                        <button type="submit" class="btn bbtn-custom">Logout</button>
                     </form>
                 </li>
             </ul>

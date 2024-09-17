@@ -9,7 +9,7 @@
     <!-- FontAwesome CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
 <div class="container">
@@ -26,7 +26,7 @@
             <input type="password" id="password" name="password" class="form-control" required>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-custom">Login</button>
         </div>
         <div th:if="${param.error}">
             <p class="error">Invalid username or password</p>
@@ -41,9 +41,8 @@
     <!-- Opțiunea de autentificare cu GitHub -->
     <div class="oauth-login">
         <h3>Or login with</h3>
-        <a href="/oauth2/authorization/github" class="btn btn-dark">
-            <img src="/images/github-logo.png" alt="GitHub Logo" style="width: 20px; height: 20px;">
-            Login with GitHub
+        <a href="/oauth2/authorization/github">
+            <img th:src="@{/images/github-logo.png}" alt="GitHub Logo" style="width: 20px; height: 20px;">GitHub
         </a>
     </div>
 </div>

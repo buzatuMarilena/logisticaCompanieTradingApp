@@ -18,10 +18,8 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                                .requestMatchers("/login", "/oauth2/**").permitAll()  // Permite accesul la login și OAuth
+                                .requestMatchers("/login", "/oauth2/**", "/images/**", "/css/**", "/js/**").permitAll()  // Permite accesul la login și OAuth
                                 .requestMatchers("/admin/**").hasRole("ADMIN")  // Permite accesul la URL-urile care conțin /admin/ doar pentru ADMIN
-//                        .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")  // Permite accesul la URL-urile care conțin /user/ pentru USER și ADMIN
-//                        .requestMatchers("/home").authenticated()  // Permite accesul la /home pentru toți utilizatorii autentificați
                                 .requestMatchers("/x").hasAnyRole("ADMIN", "USER")  // Acces pentru roluri USER și ADMIN
                                 .requestMatchers("/z").hasRole("ADMIN")  // Acces doar pentru ADMIN
                                 .anyRequest().authenticated()  // Orice altă cerere trebuie să fie autentificată

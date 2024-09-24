@@ -24,8 +24,10 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                                .requestMatchers("/login", "/oauth2/**", "/images/**", "/css/**", "/js/**").permitAll()  // Permite accesul la login și OAuth
-                                .anyRequest().authenticated()  // Orice altă cerere trebuie să fie autentificată
+                        .requestMatchers("/login", "/oauth2/**", "/images/**", "/css/**", "/js/**").permitAll()  // Permite accesul la login și OAuth
+                        .requestMatchers("/xPage").hasAnyRole("ADMIN", "USER")  // Acces pentru rolurile USER și ADMIN
+                        .requestMatchers("/zPage").hasRole("ADMIN")  // Acces doar pentru ADMIN
+                        .anyRequest().authenticated()  // Orice altă cerere trebuie să fie autentificată
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
@@ -35,7 +37,7 @@ public class SecurityConfig {
                 .oauth2Login(oauth2 -> oauth2
                         .loginPage("/login")  // Folosește aceeași pagină de login și pentru OAuth2
                         .userInfoEndpoint(userInfo -> userInfo
-                                .userService(customOAuth2UserService) // Folosește serviciul nostru personalizat pentru OAuth2User
+                                .userService(customOAuth2UserService)  // Folosește serviciul personalizat pentru OAuth2User
                         )
                         .defaultSuccessUrl("/home", true)  // Redirecționează către homepage după login cu OAuth2
                         .permitAll()
@@ -43,9 +45,11 @@ public class SecurityConfig {
                 .logout(logout -> logout
                         .logoutUrl("/logout")
                         .logoutSuccessHandler(logout.getLogoutSuccessHandler())
-                        .permitAll())
+                        .permitAll()
+                )
                 .build();
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {

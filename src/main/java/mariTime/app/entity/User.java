@@ -18,8 +18,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 20)
     private String username;
+    @Column(nullable = false)
     private String password;  // Parola va fi criptată
+    @Column(nullable = false, length = 20)
+    private String firstName;
+    @Column(nullable = false, length = 20)
+    private String lastName;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles",

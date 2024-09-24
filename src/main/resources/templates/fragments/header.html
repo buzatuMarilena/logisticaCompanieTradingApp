@@ -1,35 +1,35 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/springsecurity5">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <!-- Poți include aici orice meta tags, link-uri către CSS sau JS, dacă ai nevoie -->
 </head>
 <body>
 <div th:fragment="header">
     <!-- Header with Menu -->
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg fixed-top">  <!-- Clasa fixed-top adăugată aici -->
         <a class="navbar-brand text-white" href="/home">MARI TIME</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto">  <!-- ml-auto asigură că meniul va fi aliniat la dreapta -->
                 <li class="nav-item" th:if="${isUser}">
-                    <a class="nav-link" th:href="@{/x}">X USER</a>  <!-- Link către /x -->
+                    <a class="nav-link" th:href="@{/xPage}">X USER</a>
                 </li>
                 <li class="nav-item" th:if="${isAdmin}">
-                    <a class="nav-link" th:href="@{/z}">Z ADMIN</a>  <!-- Link către /z -->
+                    <a class="nav-link" th:href="@{/zPage}">Z ADMIN</a>
                 </li>
                 <li class="nav-item">
                     <!-- Butonul de logout -->
                     <form action="/logout" method="post" style="display: inline;">
-                        <button type="submit" class="btn bbtn-custom">Logout</button>
+                        <button type="submit" class="btn btn-custom">Logout</button> <!-- asigură-te că btn-custom e definit -->
                     </form>
                 </li>
             </ul>
         </div>
     </nav>
 </div>
-</body>
+
 </html>
 

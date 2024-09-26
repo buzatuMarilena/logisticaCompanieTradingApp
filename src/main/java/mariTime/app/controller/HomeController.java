@@ -19,8 +19,8 @@ public class HomeController {
         return "user/xPage";
     }
 
-    @GetMapping("/zPage")
-    public String adminPageZ() {
-        return "admin/zPage";
-    }
+//    @GetMapping("/addUsers")
+//    public String adminPageZ() {
+//        return "admin/addUsers";
+//    }
 }

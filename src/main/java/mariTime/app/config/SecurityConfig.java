@@ -26,7 +26,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/login", "/oauth2/**", "/images/**", "/css/**", "/js/**").permitAll()  // Permite accesul la login și OAuth
                         .requestMatchers("/xPage").hasAnyRole("ADMIN", "USER")  // Acces pentru rolurile USER și ADMIN
-                        .requestMatchers("/zPage").hasRole("ADMIN")  // Acces doar pentru ADMIN
+                        .requestMatchers("/addUsers").hasRole("ADMIN")  // Acces doar pentru ADMIN
                         .anyRequest().authenticated()  // Orice altă cerere trebuie să fie autentificată
                 )
                 .formLogin(form -> form

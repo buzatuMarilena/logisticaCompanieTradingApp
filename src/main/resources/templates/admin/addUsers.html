@@ -1,0 +1,119 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Add Users</title>-->
+<!--    &lt;!&ndash; Bootstrap CSS &ndash;&gt;-->
+<!--    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">-->
+<!--    &lt;!&ndash; FontAwesome CSS &ndash;&gt;-->
+<!--    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">-->
+<!--    &lt;!&ndash; Custom CSS &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="/css/styles.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div th:insert="~{fragments/header :: header}"></div>-->
+
+<!--<div class="container mt-5">-->
+<!--    <h1>Welcome to Add Users</h1>-->
+
+<!--    <p>Logged in as: <span th:text="${username}">Admin</span></p>-->
+<!--</div>-->
+<!--<form th:action="@{/addUsers}" th:object="${user}" method="post">-->
+<!--    <label for="username">Username:</label>-->
+<!--    <input type="text" id="username" th:field="*{username}" required/><br/>-->
+
+<!--    <label for="password">Password:</label>-->
+<!--    <input type="password" id="password" th:field="*{password}" required/><br/>-->
+
+<!--    <label for="firstName">First Name:</label>-->
+<!--    <input type="text" id="firstName" th:field="*{firstName}" required/><br/>-->
+
+<!--    <label for="lastName">Last Name:</label>-->
+<!--    <input type="text" id="lastName" th:field="*{lastName}" required/><br/>-->
+
+<!--    <label for="roles">Roles:</label>-->
+<!--    <select name="roleIds" id="roles" multiple>-->
+<!--        <option th:each="role : ${roles}" th:value="${role.id}" th:text="${role.name}"></option>-->
+<!--    </select>-->
+
+
+<!--    <button type="submit">Add User</button>-->
+<!--</form>-->
+
+<!--&lt;!&ndash; Mesaj de succes &ndash;&gt;-->
+<!--<div th:if="${#httpServletRequest != null and #strings.contains(#httpServletRequest.getQueryString(), 'success')}">-->
+<!--    <p>User added successfully!</p>-->
+<!--</div>-->
+
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Users</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div th:insert="~{fragments/header :: header}"></div>
+
+<div class="container mt-5">
+    <h1>Add New User</h1>
+
+    <p class="text-right">Logged in as: <span th:text="${username}">Admin</span></p>
+
+    <!-- Formul pentru adăugarea userului -->
+    <form th:action="@{/addUsers}" th:object="${user}" method="post" class="border p-4 bg-light">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" th:field="*{username}" class="form-control" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" th:field="*{password}" class="form-control" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" th:field="*{firstName}" class="form-control" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" th:field="*{lastName}" class="form-control" required/>
+        </div>
+
+        <div class="form-group">
+            <label for="roles">Roles:</label>
+            <select name="roleIds" id="roles" class="form-control" multiple>
+                <option th:each="role : ${roles}" th:value="${role.id}" th:text="${role.name}"></option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Add User</button>
+    </form>
+
+    <!-- Mesaj de succes -->
+    <div class="mt-3" th:if="${#httpServletRequest != null and #strings.contains(#httpServletRequest.getQueryString(), 'success')}">
+        <div class="alert alert-success" role="alert">
+            User added successfully!
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
